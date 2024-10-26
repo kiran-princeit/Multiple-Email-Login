@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llEmail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_12sdp"
+    android:layout_marginLeft="@dimen/_12sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_12sdp"
+    android:background="@drawable/top_bottom_rounded_corder2"
+    android:backgroundTint="@color/statusbar_color"
+    android:paddingHorizontal="@dimen/_15sdp"
+    android:paddingVertical="@dimen/_12sdp"
+    android:paddingLeft="@dimen/_15sdp"
+    android:paddingTop="@dimen/_12sdp"
+    android:paddingRight="@dimen/_15sdp"
+    android:paddingBottom="@dimen/_12sdp">
+
+    <FrameLayout
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_rectangle"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFirstChar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:includeFontPadding="false"
+            android:text="G"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_17sdp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+           
+            android:includeFontPadding="false"
+            android:text="Gmail"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvGmailAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:alpha="0.6"
+          
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:visibility="visible"
+        android:paddingBottom="@dimen/_5sdp"
+        android:src="@drawable/ic_more" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/checkbox"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:src="@drawable/ic_unchecked"
+        android:visibility="gone" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

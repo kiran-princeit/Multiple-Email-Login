@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Multiple Email Login</string>
+
+    <string name="aol">AOL</string>
+    <string name="yahoo">Yahoo</string>
+    <string name="yendex">Yandex</string>
+    <string name="zoho">Zoho</string>
+    <string name="zoom">Zoom</string>
+    <string name="telegram">Telegram</string>
+    <string name="twitter">Twitter</string>
+    <string name="skype">Skype</string>
+    <string name="slack">Slack</string>
+    <string name="snapchat">SnapChat</string>
+    <string name="proton">Proton</string>
+    <string name="onemail">One Mail</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="godaddy">GoDaddy</string>
+    <string name="gmail">Gmail</string>
+    <string name="outlook">Outlook</string>
+    <string name="tOnline">T-Online</string>
+    <string name="inbox">Inbox</string>
+    <string name="instagram">Instagram</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="language">Languages</string>
+    <string name="facebook">Facebook</string>
+
+    <string name="login_into_multiple_accounts">Login into multiple accounts</string>
+    <string name="no_apps">No Apps</string>
+    <string name="add_account">Add Account</string>
+    <string name="all_apps">All Apps</string>
+    <string name="ok">Ok</string>
+
+</resources>

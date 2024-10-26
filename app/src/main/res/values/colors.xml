@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="statusbar_color">#f3f7ff</color>
+
+
+    <color name="gmail">#ea4335</color>
+    <color name="telegram">#27a3e2</color>
+    <color name="yahoo">#9e00ff</color>
+    <color name="zoho">#216aae</color>
+    <color name="zoom">#0b6ee6</color>
+    <color name="skype">#01a9ea</color>
+    <color name="slack">#4a154b</color>
+    <color name="snapchat">#121314</color>
+    <color name="twitter">#000000</color>
+    <color name="whatsapp">#008169</color>
+    <color name="yendex">#f43d1c</color>
+    <color name="proton">#6d4afd</color>
+    <color name="onemail">#006461</color>
+    <color name="linkedin">#0c61bf</color>
+    <color name="instagram">#0c6cf2</color>
+    <color name="inbox">#3e81f5</color>
+    <color name="facebook">#0862f7</color>
+    <color name="tOnline">#ef3d8e</color>
+    <color name="godaddy">#4da23f</color>
+    <color name="aol">#0f66f6</color>
+    <color name="outlook">#1a73e8</color>
+
+
+
+    <color name="colorAccent">#212121</color>
+    <color name="colorPrimary">#1b72e8</color>
+    <color name="colorPrimaryDark">#1b72e8</color>
+    <color name="colorPrimaryLight">#800087ff</color>
+    <color name="color_accent">@color/color_primary</color>
+    <color name="color_mav">#0080ff</color>
+    <color name="color_primary">#1b72e8</color>
+    <color name="color_primary_dark">#1b72e8</color>
+
+
+
+    <color name="blue">#1b72e8</color>
+    <color name="button_color">#1b72e8</color>
+    <color name="cdo_item_color">#f3f7ff</color>
+    <color name="floting_button_color">#1b72e8</color>
+</resources>
