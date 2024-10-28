@@ -37,6 +37,10 @@
     <color name="color_mav">#0080ff</color>
     <color name="color_primary">#1b72e8</color>
     <color name="color_primary_dark">#1b72e8</color>
+    <color name="dialog_header_color">#ebf1fc</color>
+    <color name="dialog_bg_color">#ebf1fc</color>
+    <color name="app_text_color">#393636</color>
+
 
 
 

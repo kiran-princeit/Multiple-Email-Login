@@ -1,31 +1,49 @@
 package com.example.multipleemaillogin.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.multipleemaillogin.LoginConfirmationActivity;
+import com.example.multipleemaillogin.LoginMultipleAccountActivity;
 import com.example.multipleemaillogin.MainActivity;
 import com.example.multipleemaillogin.R;
-import com.example.multipleemaillogin.SelectMailActivity;
 import com.example.multipleemaillogin.model.EmailData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHolder> {
     private Context context;
     private List<EmailData> i;
-//public List i;
+
+    OnItemClickListener listener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(EmailData email);
+    }
 
     public EmailAdapter(Context context, List<EmailData> emailList) {
         this.context = context;
@@ -39,16 +57,13 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
         return new EmailViewHolder(view);
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull EmailViewHolder holder, int position) {
         EmailData emailData = i.get(position);
-//        EmailData emailData = (EmailData) this.i.get(position);
         holder.tvFirstChar.setText(String.valueOf(emailData.getName().charAt(0)));
 
         holder.tvEmailName.setText(emailData.getName());
-        holder.tvGmailAccount.setText(emailData.getUrl());
+//        holder.tvGmailAccount.setText(emailData.getUrl());
         holder.ivBackground.setBackgroundColor(emailData.getColor());
 
 
@@ -62,97 +77,102 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
                     // Handle 'Add Account' action
                     int i2 = MainActivity.pos;
 
-                    Intent intent = new Intent(context, LoginConfirmationActivity.class);
+                    Intent intent = new Intent(context, LoginMultipleAccountActivity.class);
                     intent.putExtra("title", emailData.getName());
                     intent.putExtra("emailType", i2);
                     intent.putExtra("loginUrl", emailData.getUrl());
-                    intent.putExtra("isOpen", true);
                     context.startActivity(intent);
 
-//                    MainActivity.o(emailData.a, emailData.b, emailData.c, true);
                     Toast.makeText(context, "Add Account clicked", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (item.getItemId() == R.id.remove) {
-                    // Handle 'Remove' action
-//                    i.remove(position);
-//                    notifyItemRemoved(position);
-                    Toast.makeText(context, "Account removed", Toast.LENGTH_SHORT).show();
+                    showDialog(context, position);
                     return true;
+
                 } else {
                     return false;
                 }
             });
             popupMenu.show();
         });
-//        if (isSelectActivity) {
-//            holder.ivMore.setVisibility(View.VISIBLE);
-//            holder.checkbox.setVisibility(View.VISIBLE);
-//            // Add logic to show checked/unchecked state
-////            holder.checkbox.setImageResource(emailData.isSelected() ? R.drawable.ic_checked : R.drawable.ic_unchecked);
-//        } else {
-//            holder.checkbox.setVisibility(View.VISIBLE);
-//            holder.ivMore.setVisibility(View.GONE);
-//        }
-
-//        holder.checkbox.setOnClickListener(view -> {
-//
-////
-////            emailData.setSelected(!emailData.isSelected()); // Toggle selection state
-////            notifyItemChanged(position); //
-//
-//            boolean contains = i.contains(String.valueOf(emailData.getName()));
-//            List arrayList = i;
-//            int i2 = emailData.getId();
-//            if (contains) {
-//                arrayList.remove(String.valueOf(i2));
-//            } else {
-//                arrayList.add(String.valueOf(i2));
-//            }
-////            if (arrayList.isEmpty()) {
-////                int i3 = SelectMailActivity.d;
-////                SelectMailActivity.btnOK.setVisibility(8);
-////            } else {
-////                int i4 = SelectMailActivity.d;
-////                SelectMailActivity.btnOK.setVisibility(0);
-////            }
-//            if (arrayList.contains(String.valueOf(i2))) {
-//                holder.checkbox.setImageResource(R.drawable.ic_checked);
-//                return;
-//            } else {
-//                holder.checkbox.setImageResource(R.drawable.ic_unchecked);
-//                return;
-//            }
-//        });
 
 
-        holder.itemView.setOnClickListener(view -> {
-            context.startActivity(new Intent(context, LoginConfirmationActivity.class));
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(emailData);
+            }
         });
+    }
+
+
+    public void showDialog(Context activity, int position) {
+
+        EmailData emailData = i.get(position);
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_remove);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(dialog.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Width match parent
+        dialog.getWindow().setAttributes(layoutParams);
+
+
+        TextView btnCancel = (TextView) dialog.findViewById(R.id.btnCancel);
+        TextView btnPositive = (TextView) dialog.findViewById(R.id.btnPositive);
+        btnPositive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i.remove(position);
+                notifyItemRemoved(position);
+
+                // Update SharedPreferences to remove the email ID
+                SharedPreferences sharedPreferences = context.getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                Set<String> selectedEmails = new HashSet<>(sharedPreferences.getStringSet("emails", new HashSet<>()));
+
+                // Add the email ID to a separate "removed" set in SharedPreferences
+                Set<String> removedDefaultEmails = new HashSet<>(sharedPreferences.getStringSet("removedDefaults", new HashSet<>()));
+                removedDefaultEmails.add(String.valueOf(emailData.getId()));
+                editor.putStringSet("removedDefaults", removedDefaultEmails);
+
+                // If it's user-selected, also remove from "emails"
+                selectedEmails.remove(String.valueOf(emailData.getId()));
+                editor.putStringSet("emails", selectedEmails);
+                editor.apply();
+                Toast.makeText(context, "Account removed", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
     }
 
     @Override
     public int getItemCount() {
         return i.size();
     }
-    public void updateEmails(ArrayList<EmailData> updatedEmails) {
-        this.i = updatedEmails;
-        notifyDataSetChanged();
-    }
+
     public void updateEmailList(List<EmailData> newEmailDataList) {
-//        this.i = newEmailDataList;
         this.i.clear();
         this.i.addAll(newEmailDataList);
         notifyDataSetChanged();
         notifyDataSetChanged();
-
-
-//        i.clear(); // Clear the existing list
-//        notifyDataSetChanged(); // Notify the adapter that the data has changed
     }
 
 
     static class EmailViewHolder extends RecyclerView.ViewHolder {
-        AppCompatImageView ivBackground, ivMore,checkbox;
+        AppCompatImageView ivBackground, ivMore, checkbox;
         AppCompatTextView tvFirstChar, tvEmailName, tvGmailAccount;
 
         public EmailViewHolder(@NonNull View itemView) {

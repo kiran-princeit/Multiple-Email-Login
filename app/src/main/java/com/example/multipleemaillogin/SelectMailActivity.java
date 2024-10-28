@@ -27,13 +27,13 @@ import com.example.multipleemaillogin.database.EmailDatabaseHelper;
 import com.example.multipleemaillogin.model.EmailData;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class SelectMailActivity extends AppCompatActivity implements EmailDialogAdapter.OnSelectionChangedListener {
     public static final int d = 0;
-    public static int REQUEST_CODE_SELECT_EMAIL = 1;
     RecyclerView rvEmails;
     public static Button btnOK;
     EmailDialogAdapter emailAdapter;
@@ -46,26 +46,20 @@ public class SelectMailActivity extends AppCompatActivity implements EmailDialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_mail);
 
+        emailDataList = EmailManager.getEmailData(this);
+
         findViewById(R.id.ivClose).setOnClickListener(view -> {
             onBackPressed();
         });
-        dbHelper = new EmailDatabaseHelper(this);
+
         rvEmails = findViewById(R.id.rvEmails);
         btnOK = findViewById(R.id.btnOK);
 
-        emailDataList = EmailManager.getEmailData(this); // Get all email data
-        loadSelectedEmails();
-        // Initialize selectedEmails
         rvEmails.setLayoutManager(new LinearLayoutManager(this));
-
-//        emailAdapter = new EmailDialogAdapter(this, emailDataList);
-//        List<EmailData> selectedEmails = dbHelper.getSelectedEmails(); // Fetch selected emails
-//        emailAdapter.setSelectedEmails(selectedEmails); // Update adapter
-
-        loadSelectedEmails();
         emailAdapter = new EmailDialogAdapter(emailDataList,this,  this);
 
         rvEmails.setAdapter(emailAdapter);
+        loadSelectedEmails();
         btnOK.setOnClickListener(view -> {
 
             ArrayList<String> selectedEmails = new ArrayList<>();
@@ -74,53 +68,76 @@ public class SelectMailActivity extends AppCompatActivity implements EmailDialog
                     selectedEmails.add(String.valueOf(email.getId())); // Add the email ID
                 }
             }
+
+            // Save selected emails to SharedPreferences
+            SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putStringSet("emails", new HashSet<>(selectedEmails)); // Save as Set
+            editor.apply();
+
+
             Intent resultIntent = new Intent();
             resultIntent.putStringArrayListExtra("selectedEmails", selectedEmails);
             setResult(RESULT_OK, resultIntent);
             finish(); // Close the activity
 
         });
+
+        updateOkButtonVisibility();
     }
 
     private void loadSelectedEmails() {
+        // Define default IDs
+        Set<String> defaultIds = new HashSet<>(Arrays.asList("1", "2", "3", "6", "7"));
+
+        // Get selected and removed default emails from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
         Set<String> selectedEmails = sharedPreferences.getStringSet("emails", new HashSet<>());
+        Set<String> removedDefaults = sharedPreferences.getStringSet("removedDefaults", new HashSet<>());
 
+        // Loop through the email data list and update checked status
         for (EmailData email : emailDataList) {
-            if (selectedEmails.contains(String.valueOf(email.getId())) ||
-                    email.getId() == 7 || email.getId() == 1 || email.getId() == 6 || email.getId() == 3 || email.getId() == 2) { // Default selection for id 1 and 2
-                email.setChecked(true); // Mark as checked
+            String emailId = String.valueOf(email.getId());
+
+            // Check if the email is selected, or it’s a default but not removed
+            if (selectedEmails.contains(emailId) || (defaultIds.contains(emailId) && !removedDefaults.contains(emailId))) {
+                email.setChecked(true);
             } else {
-                email.setChecked(false); // Ensure unchecked state if not selected
+                email.setChecked(false);
             }
+        }
+
+        // Notify adapter of changes
+        if (emailAdapter != null) {
+            emailAdapter.notifyDataSetChanged();
         }
     }
 
-//    private void saveSelectedEmails() {
+    public void updateOkButtonVisibility() {
+        boolean isAnyEmailSelected = false;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            isAnyEmailSelected = emailDataList.stream().anyMatch(EmailData::isChecked);
+        }
+        btnOK.setVisibility(isAnyEmailSelected ? View.VISIBLE : View.GONE);
+    }
+
+
+    //    private void loadSelectedEmails() {
 //        SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        Set<String> selectedEmails = new HashSet<>();
+//        Set<String> selectedEmails = sharedPreferences.getStringSet("emails", new HashSet<>());
 //
 //        for (EmailData email : emailDataList) {
-//            if (email.isChecked()) {
-//                selectedEmails.add(String.valueOf(email.getId()));
+//            if (selectedEmails.contains(String.valueOf(email.getId())) ||
+//                    email.getId() == 7 || email.getId() == 1 || email.getId() == 6 || email.getId() == 3 || email.getId() == 2) { // Default selection id
+//                email.setChecked(true); // Mark as checked
+//            } else {
+//                email.setChecked(false);
 //            }
 //        }
-//old
-//        editor.putStringSet("emails", selectedEmails);
-//        editor.apply();
+//        if (emailAdapter != null) {
+//            emailAdapter.notifyDataSetChanged();
+//        }
 //    }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        // Pass selected emails back to MainActivity
-//        Intent intent = new Intent();
-//        intent.putExtra("selectedEmails", emailAdapter.getSelectedEmails());
-//        setResult(RESULT_OK, intent);
-//        finish();
-//    }
-
     @Override
     public void onCheckedChanged(EmailData emailData, boolean isChecked) {
         emailData.setChecked(isChecked);
@@ -144,149 +161,12 @@ public class SelectMailActivity extends AppCompatActivity implements EmailDialog
     }
 
 
-//    public class EmailDialogAdapter extends RecyclerView.Adapter<EmailDialogAdapter.EmailViewHolder> {
-//        private Context context;
-//        private ArrayList<EmailData> emailList;
-//        private OnItemCheckedChangeListener listener;
-////        private HashSet<EmailData> selectedEmails = new HashSet<>();
-//
-//        private List<EmailData> selectedEmails = new ArrayList<>();
-//
-//
-////        public  List emailList;
-////        public  ArrayList selectedEmails;
-//
-////        public EmailDialogAdapter(ArrayList arrayList) {
-////            this.emailList = arrayList;
-////            this.selectedEmails = new ArrayList(ContextKt.c(SelectMailActivity.this).getEmailAccounts());
-////        }
-//
-//        public interface OnItemCheckedChangeListener {
-//            void onCheckedChanged(EmailData emailData, boolean isChecked);
-//        }
-//        public EmailDialogAdapter(Context context, ArrayList<EmailData> emailList, OnItemCheckedChangeListener listener) {
-//            this.context = context;
-//            this.emailList = emailList;
-//            this.listener = listener;
-//        }
-//
-//        @NonNull
-//        @Override
-//        public EmailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//            View view = LayoutInflater.from(context).inflate(R.layout.item_email_dialog, parent, false);
-//            return new EmailViewHolder(view);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(@NonNull EmailViewHolder holder, int position) {
-//            EmailData emailData = emailList.get(position);
-//
-//            holder.tvFirstChar.setText(String.valueOf(emailData.getName().charAt(0)));
-//            holder.tvEmailName.setText(emailData.getName());
-//            holder.tvGmailAccount.setText(emailData.getUrl());
-//            holder.ivBackground.setBackgroundColor(emailData.getColor());
-//
-//
-//            holder.checkbox.setOnClickListener(view -> {
-//
-//                if (selectedEmails.contains(emailData)) {
-//                    selectedEmails.remove(emailData);
-//                    holder.checkbox.setImageResource(R.drawable.ic_unchecked);
-//                } else {
-//                    selectedEmails.add(emailData);
-//                    holder.checkbox.setImageResource(R.drawable.ic_checked);
-//                }
-//
-//
-//                boolean contains = emailAdapter.emailList.contains(String.valueOf(emailData.getName()));
-//                List arrayList = emailAdapter.emailList;
-//                int i2 = emailData.getId();
-//                if (contains) {
-//                    arrayList.remove(String.valueOf(i2));
-//                } else {
-//                    arrayList.add(String.valueOf(i2));
-//                }
-//                if (arrayList.isEmpty()) {
-//                    int i3 = SelectMailActivity.d;
-//                    SelectMailActivity.btnOK.setVisibility(8);
-//                } else {
-//                    int i4 = SelectMailActivity.d;
-//                    SelectMailActivity.btnOK.setVisibility(0);
-//                }
-////                if (arrayList.contains(String.valueOf(i2))) {
-////                    holder.checkbox.setImageResource(R.drawable.ic_checked);
-////                    return;
-////                } else {
-////                    holder.checkbox.setImageResource(R.drawable.ic_unchecked);
-////                    return;
-////                }
-//            });
-////            holder.checkbox.setOnClickListener(view -> {
-////                if (selectedEmails.contains(emailData)) {
-////                    selectedEmails.remove(emailData);
-////                    holder.checkbox.setImageResource(R.drawable.ic_unchecked);
-////                } else {
-////                    selectedEmails.add(emailData);
-////                    holder.checkbox.setImageResource(R.drawable.ic_checked);
-////                }
-////
-////                // Show or hide the OK button based on selection
-////                SelectMailActivity.btnOK.setVisibility(selectedEmails.isEmpty() ? View.GONE : View.VISIBLE);
-////            });
-//
-//
-//        }
-//
-//        public ArrayList<EmailData> getSelectedEmails() {
-//            return new ArrayList<>(selectedEmails);
-//        }
-//
-//        public void setSelectedEmails(List<EmailData> selectedEmails) {
-//            this.selectedEmails.clear();
-//            for (EmailData email : selectedEmails) {
-//                email.setChecked(true); // Mark as checked in the list
-//                this.selectedEmails.add(email);
-//            }
-//            notifyDataSetChanged(); // Notify adapter to refresh the view
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return emailList.size();
-//        }
-////        @Override
-////        public int getItemCount() {
-////            return emailList != null ? emailList.size() : 0; // Safeguard against null
-////        }
-//
-//        public ArrayList<EmailData> getAll() {
-//            return emailList;
-//        }
-//
-//        public ArrayList<EmailData> getSelected() {
-//            ArrayList<EmailData> selected = new ArrayList<>();
-//            for (int i = 0; i < emailList.size(); i++) {
-//                if (emailList.get(i).isChecked()) {
-//                    selected.add(emailList.get(i));
-//                }
-//            }
-//            return selected;
-//        }
-//
-//        class EmailViewHolder extends RecyclerView.ViewHolder {
-//            AppCompatImageView ivBackground, checkbox;
-//            AppCompatTextView tvFirstChar, tvEmailName, tvGmailAccount;
-//
-//            public EmailViewHolder(@NonNull View itemView) {
-//                super(itemView);
-//                ivBackground = itemView.findViewById(R.id.ivBackground);
-//                checkbox = itemView.findViewById(R.id.checkbox);
-//                tvFirstChar = itemView.findViewById(R.id.tvFirstChar);
-//                tvEmailName = itemView.findViewById(R.id.tvEmailName);
-//                tvGmailAccount = itemView.findViewById(R.id.tvGmailAccount);
-//            }
-//        }
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadSelectedEmails();
+        updateOkButtonVisibility();// Reload emails to update checked state based on SharedPreferences
+    }
 
 
 }

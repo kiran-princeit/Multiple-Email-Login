@@ -23,6 +23,7 @@ import com.example.multipleemaillogin.model.EmailData;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -31,12 +32,9 @@ import kotlin.jvm.internal.Intrinsics;
 public class MainActivity extends AppCompatActivity {
     public static final int pos = 0;
     private static final int SELECT_EMAIL_REQUEST = 1;
-
     private RecyclerView recyclerView;
     private EmailAdapter emailAdapter;
-    private EmailDatabaseHelper dbHelper;
     LinearLayout llEmpty;
-    public static final String COLUMN_NAME_TITLE = "title";
     List<EmailData> emailDataList;
 
 
@@ -56,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
         emailAdapter = new EmailAdapter(MainActivity.this, new ArrayList<>());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(emailAdapter);
+
+        emailAdapter.setOnItemClickListener(email -> {
+            Intent intent = new Intent(MainActivity.this, LoginMultipleAccountActivity.class);
+            startActivity(intent);
+        });
+
         loadCheckedEmails();
 
 
@@ -73,8 +77,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_EMAIL_REQUEST && resultCode == RESULT_OK && data != null) {
-            // Reload checked emails after returning
-            loadCheckedEmails(); // Ensure this is called to update UI immediately
+            if (requestCode == SELECT_EMAIL_REQUEST && resultCode == RESULT_OK && data != null) {
+                List<String> updatedSelectedEmails = data.getStringArrayListExtra("selectedEmails");
+
+                if (updatedSelectedEmails != null) {
+                    // Filter the email list based on updated selections
+                    List<EmailData> filteredEmailList = new ArrayList<>();
+                    for (EmailData email : emailDataList) {
+                        if (updatedSelectedEmails.contains(String.valueOf(email.getId()))) {
+                            filteredEmailList.add(email);
+                        }
+                    }
+
+                    // Update the adapter with the filtered list
+                    emailAdapter.updateEmailList(filteredEmailList);
+                }
+            }
         }
     }
 
@@ -94,31 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 checkedEmails.add(email); // Add to checkedEmails if selected
             }
         }
-
         emailAdapter.updateEmailList(checkedEmails); // Update the adapter with checked emails
     }
 
-    public void removeEmail(int emailId) {
-        // Remove from emailDataList and update SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
-        Set<String> selectedEmails = sharedPreferences.getStringSet("emails", new HashSet<>());
-
-        // Remove the email ID from selected emails
-        selectedEmails.remove(String.valueOf(emailId));
-
-        // Save updated set back to SharedPreferences
-        sharedPreferences.edit().putStringSet("emails", selectedEmails).apply();
-
-        // Update your emailDataList
-        for (EmailData email : emailDataList) {
-            if (email.getId() == emailId) {
-                emailDataList.remove(email);
-                break;
-            }
-        }
-
-        // Notify the adapter
-        emailAdapter.notifyDataSetChanged();
-    }
 
 }
