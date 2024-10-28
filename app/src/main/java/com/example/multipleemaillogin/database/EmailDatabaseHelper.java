@@ -66,46 +66,46 @@ public class EmailDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<EmailData> getAllEmails() {
-        ArrayList<EmailData> emailList = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_EMAILS, null, null, null, null, null, null);
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                String url = cursor.getString(cursor.getColumnIndex(COLUMN_URL));
-                int color = cursor.getInt(cursor.getColumnIndex(COLUMN_COLOR));
-                boolean isChecked = cursor.getInt(cursor.getColumnIndex(COLUMN_IS_SELECTED)) == 1; // Check if selected
-
-                EmailData emailData = new EmailData(id, color, name, url);
-                emailData.setChecked(isChecked); // Set checked state
-                emailList.add(emailData);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return emailList;
-    }
+//    public ArrayList<EmailData> getAllEmails() {
+//        ArrayList<EmailData> emailList = new ArrayList<>();
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.query(TABLE_EMAILS, null, null, null, null, null, null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+//                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+//                String url = cursor.getString(cursor.getColumnIndex(COLUMN_URL));
+//                int color = cursor.getInt(cursor.getColumnIndex(COLUMN_COLOR));
+//                boolean isChecked = cursor.getInt(cursor.getColumnIndex(COLUMN_IS_SELECTED)) == 1; // Check if selected
+//
+//                EmailData emailData = new EmailData(id, color, name, url);
+//                emailData.setChecked(isChecked); // Set checked state
+//                emailList.add(emailData);
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return emailList;
+//    }
 
     // Method to retrieve selected emails
-    public ArrayList<EmailData> getSelectedEmails() {
-        ArrayList<EmailData> emailList = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_EMAILS, null, COLUMN_IS_SELECTED + " = 1", null, null, null, null);
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                String url = cursor.getString(cursor.getColumnIndex(COLUMN_URL));
-                int color = cursor.getInt(cursor.getColumnIndex(COLUMN_COLOR));
-                emailList.add(new EmailData(id, color, name, url));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return emailList;
-    }
+//    public ArrayList<EmailData> getSelectedEmails() {
+//        ArrayList<EmailData> emailList = new ArrayList<>();
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.query(TABLE_EMAILS, null, COLUMN_IS_SELECTED + " = 1", null, null, null, null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+//                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+//                String url = cursor.getString(cursor.getColumnIndex(COLUMN_URL));
+//                int color = cursor.getInt(cursor.getColumnIndex(COLUMN_COLOR));
+//                emailList.add(new EmailData(id, color, name, url));
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return emailList;
+//    }
 
     // Method to update selected state of an email
     public void updateEmailSelection(int id, boolean isSelected) {

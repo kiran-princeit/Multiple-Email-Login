@@ -38,7 +38,6 @@ public class SelectMailActivity extends AppCompatActivity implements EmailDialog
     public static Button btnOK;
     EmailDialogAdapter emailAdapter;
     private ArrayList<EmailData> emailDataList;
-    private EmailDatabaseHelper dbHelper;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -121,23 +120,6 @@ public class SelectMailActivity extends AppCompatActivity implements EmailDialog
         btnOK.setVisibility(isAnyEmailSelected ? View.VISIBLE : View.GONE);
     }
 
-
-    //    private void loadSelectedEmails() {
-//        SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
-//        Set<String> selectedEmails = sharedPreferences.getStringSet("emails", new HashSet<>());
-//
-//        for (EmailData email : emailDataList) {
-//            if (selectedEmails.contains(String.valueOf(email.getId())) ||
-//                    email.getId() == 7 || email.getId() == 1 || email.getId() == 6 || email.getId() == 3 || email.getId() == 2) { // Default selection id
-//                email.setChecked(true); // Mark as checked
-//            } else {
-//                email.setChecked(false);
-//            }
-//        }
-//        if (emailAdapter != null) {
-//            emailAdapter.notifyDataSetChanged();
-//        }
-//    }
     @Override
     public void onCheckedChanged(EmailData emailData, boolean isChecked) {
         emailData.setChecked(isChecked);

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout llEmpty;
     List<EmailData> emailDataList;
 
-
+    private boolean isDialogShown = false;
     private List<EmailData> checkedEmails;
 
     @Override
@@ -48,20 +48,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvEmails);
         llEmpty = findViewById(R.id.llEmpty);
 
-
         emailDataList = loadAllEmails();
 //        emailAdapter = new EmailAdapter(MainActivity.this, emailDataList);
-        emailAdapter = new EmailAdapter(MainActivity.this, new ArrayList<>());
+        emailAdapter = new EmailAdapter(MainActivity.this, new ArrayList<>(),MainActivity.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(emailAdapter);
 
-        emailAdapter.setOnItemClickListener(email -> {
-            Intent intent = new Intent(MainActivity.this, LoginMultipleAccountActivity.class);
-            startActivity(intent);
-        });
-
         loadCheckedEmails();
-
 
         findViewById(R.id.addProfile).setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, SelectMailActivity.class);
@@ -114,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
         }
         emailAdapter.updateEmailList(checkedEmails); // Update the adapter with checked emails
     }
+    public boolean isDialogShown() {
+        return isDialogShown;
+    }
 
+    public void setDialogShown(boolean dialogShown) {
+        isDialogShown = dialogShown;
+    }
 
 }

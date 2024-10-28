@@ -45,4 +45,7 @@ dependencies {
 
     implementation ("android.arch.persistence.room:runtime:1.0.0-alpha1")
     annotationProcessor ("android.arch.persistence.room:compiler:1.0.0-alpha1")
+    implementation ("com.airbnb.android:lottie:3.4.0")
+
+
 }

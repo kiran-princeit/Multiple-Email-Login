@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.multipleemaillogin.R;
 import com.example.multipleemaillogin.SelectMailActivity;
-import com.example.multipleemaillogin.database.EmailDatabaseHelper;
 import com.example.multipleemaillogin.model.EmailData;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.List;
 public class EmailDialogAdapter extends RecyclerView.Adapter<EmailDialogAdapter.EmailViewHolder> {
     private Context context;
     private List<EmailData> emailList;
-    private EmailDatabaseHelper dbHelper;
+
     private List<EmailData> selectedEmails = new ArrayList<>();
     private OnSelectionChangedListener selectionChangedListener;
 

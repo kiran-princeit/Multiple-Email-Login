@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,20 +35,12 @@ import java.util.Set;
 public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHolder> {
     private Context context;
     private List<EmailData> i;
+    MainActivity mainActivity;
 
-    OnItemClickListener listener;
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(EmailData email);
-    }
-
-    public EmailAdapter(Context context, List<EmailData> emailList) {
+    public EmailAdapter(Context context, List<EmailData> emailList, MainActivity mainActivity) {
         this.context = context;
         this.i = emailList;
+        this.mainActivity = mainActivity;
     }
 
     @NonNull
@@ -71,18 +64,16 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
             PopupMenu popupMenu = new PopupMenu(context, holder.ivMore);
             popupMenu.getMenuInflater().inflate(R.menu.email_options_menu, popupMenu.getMenu());
 
-            // Set click listener for popup menu items
+
             popupMenu.setOnMenuItemClickListener(item -> {
                 if (item.getItemId() == R.id.add_account) {
                     // Handle 'Add Account' action
                     int i2 = MainActivity.pos;
-
                     Intent intent = new Intent(context, LoginMultipleAccountActivity.class);
                     intent.putExtra("title", emailData.getName());
-                    intent.putExtra("emailType", i2);
+                    intent.putExtra("emailType", emailData.getName());
                     intent.putExtra("loginUrl", emailData.getUrl());
                     context.startActivity(intent);
-
                     Toast.makeText(context, "Add Account clicked", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (item.getItemId() == R.id.remove) {
@@ -98,9 +89,12 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(emailData);
-            }
+            Intent intent = new Intent(context, LoginMultipleAccountActivity.class);
+            intent.putExtra("title", emailData.getName());
+            intent.putExtra("emailType", MainActivity.pos);
+            intent.putExtra("loginUrl", emailData.getUrl());
+            context.startActivity(intent);
+
         });
     }
 
@@ -185,5 +179,6 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
             tvGmailAccount = itemView.findViewById(R.id.tvGmailAccount);
         }
     }
+
 }
 
