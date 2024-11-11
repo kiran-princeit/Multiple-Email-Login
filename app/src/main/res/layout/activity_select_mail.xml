@@ -11,7 +11,6 @@
         android:id="@+id/llTopBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
-        android:background="@color/statusbar_color"
         android:gravity="center"
         android:paddingHorizontal="@dimen/_15sdp"
         android:paddingLeft="@dimen/_15sdp"
@@ -40,7 +39,9 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="@string/all_apps"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:fontFamily="@font/poppins_semi_bold" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -59,7 +60,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnOK"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_42sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_marginLeft="@dimen/_15sdp"

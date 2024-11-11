@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">すべての電子メール - 1 か所で</string>
+    <string name="aol">AOL</string>
+    <string name="yahoo">ヤフー</string>
+    <string name="yendex">ヤンデックス</string>
+    <string name="zoho">ゾーホー</string>
+    <string name="zoom">ズーム</string>
+    <string name="telegram">電報</string>
+    <string name="twitter">ツイッター</string>
+    <string name="skype">スカイプ</string>
+    <string name="slack">スラック</string>
+    <string name="snapchat">スナップチャット</string>
+    <string name="proton">プロトン</string>
+    <string name="onemail">1通のメール</string>
+    <string name="linkedin">リンクトイン</string>
+    <string name="godaddy">ゴーダディ</string>
+    <string name="gmail">Gメール</string>
+    <string name="outlook">見通し</string>
+    <string name="tOnline">T-オンライン</string>
+    <string name="inbox">受信箱</string>
+    <string name="instagram">インスタグラム</string>
+    <string name="whatsapp">ワッツアップ</string>
+    <string name="language">言語</string>
+    <string name="facebook">フェイスブック</string>
+    <string name="login_into_multiple_accounts">複数のアカウントにログインする</string>
+    <string name="no_apps">アプリがありません</string>
+    <string name="add_account">アカウントの追加</string>
+    <string name="all_apps">すべてのアプリ</string>
+    <string name="ok">わかりました</string>
+    <string name="cancel">キャンセル</string>
+    <string name="remove">取り除く</string>
+    <string name="add_profile">プロファイルの追加</string>
+    <string name="enter_your_name">あなたの名前を入力してください</string>
+    <string name="add">追加</string>
+    <string name="please_wait">お待ちください…</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="settings">設定</string>
+    <string name="feedback">フィードバック</string>
+    <string name="share_app">アプリを共有する</string>
+    <string name="rate_us">評価してください</string>
+    <string name="about_app">アプリについて</string>
+    <string name="email_choose_from_client">次から電子メール クライアントを選択してください…</string>
+    <string name="edit">編集</string>
+    <string name="are_you_sure_you_want_to_remove_account">アカウントを削除してもよろしいですか?</string>
+    <string name="remove_account">アカウントの削除</string>
+    <string name="logout">ログアウト</string>
+    <string name="edit_profile">プロフィールの編集</string>
+    <string name="done">終わり</string>
+    <string name="str_account"><![CDATA[複数のアカウントをお持ちの場合は、\n一度に複数のアカウントにログインできます。]]></string>
+    <string name="select_language">言語の選択</string>
+    <string name="continues">続く</string>
+    <string name="which_language_would_you_nprefer_to_continue_in">"どの言語を使用しますか "</string>
+    <string name="are_you_sure_to_want_to_exit">本当に終了しますか?</string>
+    <string name="exit">出口</string>
+    <string name="by_continuing_you_agree_to_the">続行すると、次の内容に同意したことになります</string>
+    <string name="text1">複数メールログイン</string>
+    <string name="text2">すべてのメールを簡単に管理</string>
+    <string name="des2"><![CDATA[すべてのアカウントへのクイック アクセス\n<br/>\n<br/>複数のアカウントの管理のシンプルさと容易さを強調します。]]></string>
+
+    <string name="des1"><![CDATA[<b>こんにちは！</b>\n<br/>\n<br/> "ご参加いただけることを嬉しく思います!\n<br/>\n<br/>いくつかの手順をすばやく実行して、アプリが最適な状態で動作できるようにしてください。"]]></string>
+    <string name="skip">スキップ</string>
+
+</resources>

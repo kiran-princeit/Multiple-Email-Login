@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tutte le e-mail in un unico posto</string>
+    <string name="aol">AOL</string>
+    <string name="yahoo">Yako</string>
+    <string name="yendex">YandEx</string>
+    <string name="zoho">zoppa</string>
+    <string name="zoom">Ingrandire</string>
+    <string name="telegram">Telegramma</string>
+    <string name="twitter">Cinguettio</string>
+    <string name="skype">Skype</string>
+    <string name="slack">Lento</string>
+    <string name="snapchat">SnapChat</string>
+    <string name="proton">pro·tó·ne</string>
+    <string name="onemail">Una posta</string>
+    <string name="linkedin">LinkedIN</string>
+    <string name="godaddy">Vai papà</string>
+    <string name="gmail">Gmail</string>
+    <string name="outlook">Veduta</string>
+    <string name="tOnline">T-Online</string>
+    <string name="inbox">Posta in arrivo</string>
+    <string name="instagram">Instagram</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="language">Lingue</string>
+    <string name="facebook">Fai clic su Mi Piace</string>
+    <string name="login_into_multiple_accounts">Accedi a più account</string>
+    <string name="no_apps">Nessuna app</string>
+    <string name="add_account">Aggiungi account</string>
+    <string name="all_apps">Tutte le app</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancellare</string>
+    <string name="remove">Rimuovere</string>
+    <string name="add_profile">Aggiungi profilo</string>
+    <string name="enter_your_name">Inserisci il tuo nome</string>
+    <string name="add">Aggiungere</string>
+    <string name="please_wait">Attendere prego…</string>
+    <string name="privacy_policy">politica sulla riservatezza</string>
+    <string name="settings">Impostazioni</string>
+    <string name="feedback">Riscontro</string>
+    <string name="share_app">Condividi l\'app</string>
+    <string name="rate_us">Valutaci</string>
+    <string name="about_app">Informazioni sull\'app</string>
+    <string name="email_choose_from_client">Scegli un client di posta elettronica da...</string>
+    <string name="edit">Modificare</string>
+    <string name="are_you_sure_you_want_to_remove_account">Sei sicuro di voler rimuovere l\'account?</string>
+    <string name="remove_account">Rimuovi conto</string>
+    <string name="logout">Esci</string>
+    <string name="edit_profile">Modifica profilo</string>
+    <string name="done">Fatto</string>
+    <string name="str_account"><![CDATA[Se hai più di un account,\n puoi accedere a più account contemporaneamente.]]></string>
+    <string name="select_language">Seleziona lingua</string>
+    <string name="continues">Continuare</string>
+    <string name="which_language_would_you_nprefer_to_continue_in">"Quale lingua vorresti? "</string>
+    <string name="caller_id">preferisci continuare?</string>
+    <string name="are_you_sure_to_want_to_exit">Vuoi davvero uscire?</string>
+    <string name="exit">Uscita</string>
+    <string name="by_continuing_you_agree_to_the">Continuando accetti i</string>
+    <string name="text1">Accesso e-mail multiplo</string>
+    <string name="text2">Gestisci facilmente tutte le tue email</string>
+
+    <string name="des2"><![CDATA[Accesso rapido a tutti i tuoi account\n<br/>\n<br/>Sottolinea la semplicità e la facilità di gestire più account.]]></string>
+
+
+
+    <string name="des1"><![CDATA[<b>Ciao!</b>\n<br/>\n<br/> "Siamo entusiasti di averti a bordo!\n<br/>\n<br/>Consentitemi segui velocemente alcuni passaggi per far sì che l'app funzioni al meglio!"]]></string>
+    <string name="skip">Saltare</string>
+</resources>

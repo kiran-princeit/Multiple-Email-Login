@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सभी ईमेल - एक ही स्थान पर</string>
+    <string name="aol">एओएल</string>
+    <string name="yahoo">याहू</string>
+    <string name="yendex">यांडेक्स</string>
+    <string name="zoho">जोहो</string>
+    <string name="zoom">ज़ूम</string>
+    <string name="telegram">टेलीग्राम</string>
+    <string name="twitter">ट्विटर</string>
+    <string name="skype">स्काइप</string>
+    <string name="slack">ढीला</string>
+
+    <string name="snapchat">स्नैपचैट</string>
+    <string name="proton">प्रोटोन</string>
+    <string name="onemail">एक मेल</string>
+    <string name="linkedin">लिंक्डइन</string>
+    <string name="godaddy">शाबाश डैडी</string>
+    <string name="gmail">जीमेल लगीं</string>
+    <string name="outlook">आउटलुक</string>
+    <string name="tOnline">टी-ऑनलाइन</string>
+    <string name="inbox">इनबॉक्स</string>
+    <string name="instagram">इंस्टाग्राम</string>
+    <string name="whatsapp">व्हाट्सऐप</string>
+    <string name="language">बोली</string>
+    <string name="facebook">फेसबुक</string>
+    <string name="login_into_multiple_accounts">एकाधिक खातों में लॉगिन करें</string>
+    <string name="no_apps">कोई ऐप्स नहीं</string>
+    <string name="add_account">खाता जोड़ें</string>
+    <string name="all_apps">सभी ऐप्स</string>
+    <string name="ok">ठीक है</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="remove">निकालना</string>
+    <string name="add_profile">प्रोफ़ाइल जोड़ें</string>
+    <string name="enter_your_name">अपना नाम दर्ज करें</string>
+    <string name="add">जोड़ना</string>
+    <string name="please_wait">कृपया प्रतीक्षा करें…</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="feedback">प्रतिक्रिया</string>
+    <string name="share_app">ऐप साझा करें</string>
+    <string name="rate_us">हमें रेटिंग दें</string>
+    <string name="about_app">ऐप के बारे में</string>
+    <string name="email_choose_from_client">यहां से एक ईमेल क्लाइंट चुनें...</string>
+    <string name="edit">संपादन करना</string>
+    <string name="are_you_sure_you_want_to_remove_account">क्या आप वाकई खाता हटाना चाहते हैं?</string>
+    <string name="remove_account">खाता हटाएँ</string>
+    <string name="logout">लॉग आउट</string>
+    <string name="edit_profile">प्रोफ़ाइल संपादित करें</string>
+    <string name="done">हो गया</string>
+    <string name="str_account"><![CDATA[यदि आपके पास एक से अधिक खाते हैं,\n तो आप एक साथ कई खातों में साइन इन कर सकते हैं।]]></string>
+    <string name="select_language">भाषा चुने</string>
+    <string name="continues">जारी रखना</string>
+    <string name="which_language_would_you_nprefer_to_continue_in">"आप कौन सी भाषा पसंद करेंगे "</string>
+    <string name="caller_id">में जारी रखना पसंद करेंगे?</string>
+    <string name="exit">बाहर निकलना</string>
+    <string name="by_continuing_you_agree_to_the">जारी रखकर, आप इससे सहमत हैं</string>
+    <string name="text1">एकाधिक ईमेल लॉगिन</string>
+    <string name="text2">अपने सभी ईमेल को सहजता से प्रबंधित करें</string>
+
+    <string name="des2"><![CDATA[आपके सभी खातों तक त्वरित पहुंच\n<br/>\n<br/>कई खातों को प्रबंधित करने की सरलता और सहजता पर जोर देता है।]]></string>
+<!---->
+    <string name="des1"><![CDATA[<b>नमस्कार!</b>\n<br/>\n<br/> "हम आपको अपने साथ पाकर उत्साहित हैं!\n<br/>\n<br/>आओ ऐप को काम करने में सक्षम करने के लिए कुछ चरणों को शीघ्रता से पूरा करें, यह सबसे अच्छा है!"]]></string>
+    <string name="are_you_sure_to_want_to_exit">क्या आप वाकई बाहर निकलना चाहते हैं?</string>
+    <string name="skip">छोडना</string>
+
+
+</resources>

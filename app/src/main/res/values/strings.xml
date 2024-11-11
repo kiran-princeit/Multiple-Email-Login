@@ -1,40 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Multiple Email Login</string>
+    <string name="app_name" translatable="false">All Email - at one place</string>
+    <string name="aol" translatable="false">AOL</string>
+    <string name="yahoo" translatable="false">Yahoo</string>
+    <string name="yendex" translatable="false">Yandex</string>
+    <string name="zoho" translatable="false">Zoho</string>
+    <string name="zoom" translatable="false">Zoom</string>
+    <string name="telegram" translatable="false">Telegram</string>
+    <string name="twitter" translatable="false">Twitter</string>
+    <string name="skype" translatable="false">Skype</string>
+    <string name="slack" translatable="false">Slack</string>
+    <string name="snapchat" translatable="false">SnapChat</string>
+    <string name="proton" translatable="false">Proton</string>
+    <string name="onemail" translatable="false">One Mail</string>
+    <string name="linkedin" translatable="false">LinkedIn</string>
+    <string name="godaddy" translatable="false">GoDaddy</string>
+    <string name="gmail" translatable="false">Gmail</string>
+    <string name="outlook" translatable="false">Outlook</string>
+    <string name="tOnline" translatable="false">T-Online</string>
+    <string name="inbox" translatable="false">Inbox</string>
+    <string name="instagram" translatable="false">Instagram</string>
+    <string name="whatsapp" translatable="false">WhatsApp</string>
+    <string name="language" translatable="false">Languages</string>
+    <string name="facebook" translatable="false">Facebook</string>
 
-    <string name="aol">AOL</string>
-    <string name="yahoo">Yahoo</string>
-    <string name="yendex">Yandex</string>
-    <string name="zoho">Zoho</string>
-    <string name="zoom">Zoom</string>
-    <string name="telegram">Telegram</string>
-    <string name="twitter">Twitter</string>
-    <string name="skype">Skype</string>
-    <string name="slack">Slack</string>
-    <string name="snapchat">SnapChat</string>
-    <string name="proton">Proton</string>
-    <string name="onemail">One Mail</string>
-    <string name="linkedin">LinkedIn</string>
-    <string name="godaddy">GoDaddy</string>
-    <string name="gmail">Gmail</string>
-    <string name="outlook">Outlook</string>
-    <string name="tOnline">T-Online</string>
-    <string name="inbox">Inbox</string>
-    <string name="instagram">Instagram</string>
-    <string name="whatsapp">WhatsApp</string>
-    <string name="language">Languages</string>
-    <string name="facebook">Facebook</string>
+    <string name="login_into_multiple_accounts" translatable="false">Login into multiple accounts</string>
+    <string name="no_apps" translatable="false">No Apps</string>
+    <string name="add_account" translatable="false">Add Account</string>
+    <string name="all_apps" translatable="false">All Apps</string>
+    <string name="ok" translatable="false">Ok</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="remove" translatable="false">Remove</string>
+    <string name="add_profile" translatable="false">Add Profile</string>
+    <string name="enter_your_name" translatable="false">Enter Your Name</string>
+    <string name="add" translatable="false">Add</string>
 
-    <string name="login_into_multiple_accounts">Login into multiple accounts</string>
-    <string name="no_apps">No Apps</string>
-    <string name="add_account">Add Account</string>
-    <string name="all_apps">All Apps</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
-    <string name="remove">Remove</string>
-    <string name="add_profile">Add Profile</string>
-    <string name="enter_your_name">Enter Your Name</string>
-    <string name="add">Add</string>
+    <string name="please_wait" translatable="false">Please Wait…</string>
 
-    <string name="please_wait">Please Wait…</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="settings" translatable="false">Settings</string>
+    <string name="caller_id" translatable="false">Caller ID</string>
+    <string name="feedback" translatable="false">Feedback</string>
+    <string name="share_app" translatable="false">Share App</string>
+    <string name="rate_us" translatable="false">Rate Us</string>
+    <string name="about_app" translatable="false">About App\n</string>
+    <string name="email_choose_from_client" translatable="false">Choose an email client from…</string>
+
+
+    <string name="remove_account" translatable="false">Remove Account</string>
+    <string name="are_you_sure_you_want_to_remove_account" translatable="false">Are you sure you want to remove account?</string>
+    <string name="edit" translatable="false">Edit</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="edit_profile" translatable="false">Edit Profile</string>
+    <string name="done" translatable="false">Done</string>
+    <string name="str_account" translatable="false"><![CDATA[If you have more than one Accounts,\n you can sign in to multiple accounts at once.]]></string>
+    <string name="select_language" translatable="false">Select Language</string>
+    <string name="which_language_would_you_nprefer_to_continue_in" translatable="false">Which language would you \nprefer to continue in?</string>
+    <string name="continues" translatable="false">Continue</string>
+    <string name="are_you_sure_to_want_to_exit" translatable="false">Are you sure to want to Exit?</string>
+    <string name="exit" translatable="false">Exit</string>
+    <string name="by_continuing_you_agree_to_the" translatable="false">By continuing, you agree to the</string>
+    <string name="text1" translatable="false">Multiple Email Login</string>
+    <string name="text2" translatable="false">Effortlessly Manage All Your Emails</string>
+
+    <string name="des2" translatable="false">
+        <![CDATA[Quick Access to All Your Accounts\n<br/>\n<br/>Emphasizes the simplicity and ease of managing multiple accounts.]]>
+    </string>
+
+    <string name="des1" translatable="false">
+    <![CDATA[<b>Hello there!</b>\n<br/>\n<br/> "We are excited to have you on board!\n<br/>\n<br/>Lets go quickly through a few steps to enable the app to work at it is best!"]]>
+</string>
+    <string name="skip" translatable="false">Skip</string>
 
 </resources>

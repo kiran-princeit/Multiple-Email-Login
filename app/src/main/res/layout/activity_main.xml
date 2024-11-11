@@ -10,7 +10,6 @@
         android:id="@+id/llTopBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
-        android:background="@color/statusbar_color"
         android:gravity="center"
         android:paddingHorizontal="@dimen/_15sdp"
         android:paddingLeft="@dimen/_15sdp"
@@ -25,9 +24,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center_vertical"
             android:text="@string/app_name"
             android:textColor="@color/black" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAddMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical|center_horizontal|center|end"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:paddingStart="@dimen/_3sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:src="@drawable/ic_addmail" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivSetting"
@@ -54,6 +68,7 @@
             android:id="@+id/rvEmails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_6sdp"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/_90sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -65,18 +80,20 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:src="@drawable/ic_no_apps" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:alpha="0.4"
+                android:fontFamily="@font/poppin_medium"
                 android:text="@string/no_apps"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp" />
@@ -90,6 +107,7 @@
         android:layout_margin="@dimen/_20sdp"
         android:backgroundTint="@color/floting_button_color"
         android:src="@drawable/baseline_add_24"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/llAds"
         app:layout_constraintEnd_toEndOf="parent" />
 

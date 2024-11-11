@@ -30,9 +30,10 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Remove Account"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/poppin_medium"
+                android:text="@string/remove_account"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_14sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,48 +43,70 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="Are you sure you want to remove account?"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/are_you_sure_you_want_to_remove_account"
+                android:textColor="@color/text_color_light"
+                android:textSize="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
-                android:gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSubTitle">
 
-                <TextView
-                    android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
+                <!-- Cancel Button -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:alpha="0.4"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:padding="@dimen/_5sdp"
-                    android:text="@string/cancel"
-                    android:textColor="@color/app_text_color"
-                    android:textSize="@dimen/_13sdp" />
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_cancel"
+                    android:fontFamily="@font/poppin_medium"
+                    android:padding="10dp"
+                    android:text="Cancel"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    android:visibility="invisible" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCancel"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_cancel"
+                    android:fontFamily="@font/poppin_medium"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_color_light"
+                    android:textSize="12sp" />
+
+                <!-- Exit Button -->
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnPositive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:padding="@dimen/_5sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button"
+                    android:fontFamily="@font/poppin_medium"
                     android:text="@string/remove"
-                    android:textColor="@color/color_primary"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

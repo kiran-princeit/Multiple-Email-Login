@@ -27,27 +27,40 @@
     <color name="aol">#0f66f6</color>
     <color name="outlook">#1a73e8</color>
 
-
+    <color name="transparent">#00000000</color>
 
     <color name="colorAccent">#212121</color>
-    <color name="colorPrimary">#1b72e8</color>
-    <color name="colorPrimaryDark">#1b72e8</color>
+    <color name="colorPrimary">#0E79DD</color>
+    <color name="colorPrimaryDark">#0E79DD</color>
     <color name="colorPrimaryLight">#800087ff</color>
     <color name="color_accent">@color/color_primary</color>
     <color name="color_mav">#0080ff</color>
-    <color name="color_primary">#1b72e8</color>
-    <color name="color_primary_dark">#1b72e8</color>
+    <color name="color_primary">#0E79DD</color>
+    <color name="color_primary_dark">#0E79DD</color>
     <color name="dialog_header_color">#ebf1fc</color>
-    <color name="dialog_bg_color">#ebf1fc</color>
+    <color name="dialog_bg_color">#FFFFFF</color>
+    <color name="dialog_border_color">#7C7C7C</color>
+    <color name="text_color">#212121</color>
+    <color name="text_color_light">#7C7C7C</color>
     <color name="app_text_color">#393636</color>
 
     <color name="light_gray2">#33d8d8d8</color>
 
 
-
-
-    <color name="blue">#1b72e8</color>
-    <color name="button_color">#1b72e8</color>
+    <color name="blue">#0E79DD</color>
+    <color name="button_color">#0E79DD</color>
     <color name="cdo_item_color">#f3f7ff</color>
-    <color name="floting_button_color">#1b72e8</color>
+    <color name="floting_button_color">#0E79DD</color>
+
+    <item name="blue1" type="color">#9BDEF6</item>
+    <item name="purple" type="color">#DCA8F6</item>
+    <item name="green" type="color">#DEF39F</item>
+    <item name="orange" type="color">#E4CEA1</item>
+    <item name="red" type="color">#F4AEAE</item>
+    <item name="darkblue" type="color">#A8DCED</item>
+    <item name="darkpurple" type="color">#DBA6F6</item>
+    <item name="darkgreen" type="color">#DAF3A8</item>
+    <item name="darkorange" type="color">#ECCAA3</item>
+    <item name="darkred" type="color">#E1A1A1</item>
+
 </resources>

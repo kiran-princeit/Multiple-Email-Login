@@ -3,5 +3,40 @@
     <style name="Base.Theme.MultipleEmailLogin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="android:statusBarColor">@color/transparent</item>-->
+<!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+
     </style>
+
+
+<!--    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--        <item name="android:statusBarColor">@color/transparent</item>-->
+<!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppTheme.Splash" parent="AppTheme.NoActionBar">-->
+<!--&lt;!&ndash;        <item name="android:windowBackground">@drawable/splash</item>&ndash;&gt;-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
+<!--        <item name="android:windowDisablePreview">true</item>-->
+<!--        <item name="android:windowSplashScreenBackground">@color/black</item>-->
+<!--    </style>-->
+<!--    <style name="AppTheme.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--    </style>-->
+
+<!--    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">-->
+<!--        <item name="color">@color/black</item>-->
+<!--    </style>-->
+
 </resources>
