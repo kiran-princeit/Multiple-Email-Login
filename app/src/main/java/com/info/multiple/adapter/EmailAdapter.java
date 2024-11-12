@@ -27,6 +27,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hkappstech.adsprosimple.MobileAds;
 import com.info.multiple.email.onplace.login.LoginMultipleAccountActivity;
 import com.info.multiple.email.onplace.login.MainActivity;
 import com.info.multiple.email.onplace.login.R;
@@ -47,6 +48,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
         this.i = emailList;
         this.mainActivity = mainActivity;
     }
+
     public void updateAccountCount(int count) {
         this.accountCount = count;
         notifyDataSetChanged(); // Notify the adapter to refresh the view if needed
@@ -66,7 +68,6 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
         holder.tvEmailName.setText(emailData.getName());
 //        holder.tvGmailAccount.setText(emailData.getUrl());
-
 
 
         int color = emailData.getColor();
@@ -89,13 +90,13 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
             LinearLayout menuItemRemove = customView.findViewById(R.id.llRemove);
             menuItemAdd.setOnClickListener(view -> {
 
-                int i2 = MainActivity.pos;
                 Intent intent = new Intent(context, LoginMultipleAccountActivity.class);
                 intent.putExtra("title", emailData.getName());
                 intent.putExtra("emailType", emailData.getName());
                 intent.putExtra("loginUrl", emailData.getUrl());
                 context.startActivity(intent);
                 popupWindow.dismiss();
+
             });
 
             menuItemRemove.setOnClickListener(view -> {
@@ -108,13 +109,14 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
         });
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, LoginMultipleAccountActivity.class);
-            intent.putExtra("title", emailData.getName());
-            intent.putExtra("loginUrl", emailData.getUrl());
-            intent.putExtra("emailColor", emailData.getColor());
+            MobileAds.showInterstitial((Activity) context, () -> {
+                Intent intent = new Intent(context, LoginMultipleAccountActivity.class);
+                intent.putExtra("title", emailData.getName());
+                intent.putExtra("loginUrl", emailData.getUrl());
+                intent.putExtra("emailColor", emailData.getColor());
 //            context.startActivity(intent);
-            ((Activity) context).startActivityForResult(intent, REQUEST_CODE_LOGIN);
-
+                ((Activity) context).startActivityForResult(intent, REQUEST_CODE_LOGIN);
+            });
 
         });
 
@@ -122,7 +124,6 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 //        Log.e("TAG", "onBindViewHolder: "+accountCount );
 
     }
-
 
 
     public void showDialog(Context activity, int position) {

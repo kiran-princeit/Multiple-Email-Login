@@ -1,5 +1,6 @@
 package com.info.multiple.email.onplace.login;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +12,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.hkappstech.adsprosimple.MobileAds;
+import com.hkappstech.adsprosimple.am_ads.AM_Banner;
 import com.info.multiple.email.onplace.login.Utills.EmailManager;
 import com.info.multiple.adapter.EmailAdapter;
 import com.info.multiple.email.onplace.login.model.EmailData;
@@ -42,8 +47,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+        RelativeLayout adContainerBanner = findViewById(R.id.adContainerBanner);
+        ShimmerFrameLayout shimmerContainerBanner = findViewById(R.id.shimmer_container_banner);
+
+
+        AM_Banner.loadAdMobBanner(adContainerBanner, shimmerContainerBanner, MainActivity.this);
 
         recyclerView = findViewById(R.id.rvEmails);
         llEmpty = findViewById(R.id.llEmpty);
@@ -59,12 +68,16 @@ public class MainActivity extends BaseActivity {
         updateLayoutVisibility();
 
         findViewById(R.id.ivAddMail).setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SelectMailActivity.class);
-            startActivityForResult(intent, SELECT_EMAIL_REQUEST);
+            MobileAds.showInterstitial(MainActivity.this, () -> {
+                Intent intent = new Intent(MainActivity.this, SelectMailActivity.class);
+                startActivityForResult(intent, SELECT_EMAIL_REQUEST);
+            });
         });
 
         findViewById(R.id.ivSetting).setOnClickListener(view -> {
-            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+            MobileAds.showInterstitial(MainActivity.this, () -> {
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+            });
         });
     }
 

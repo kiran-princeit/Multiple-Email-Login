@@ -68,7 +68,7 @@
                     android:singleLine="true"
                     android:textColor="@color/black"
                     android:textColorHint="#66000000"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="13sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCounter"
@@ -117,10 +117,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_button_cancel"
-                    android:fontFamily="@font/poppin_medium"
                     android:text="@string/cancel"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_color_light"
+                    android:textColor="#AAAAAA"
                     android:textSize="12sp" />
 
                 <!-- Exit Button -->
@@ -130,7 +129,6 @@
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_button"
-                    android:fontFamily="@font/poppin_medium"
                     android:text="@string/edit"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"

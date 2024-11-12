@@ -63,4 +63,11 @@
     <item name="darkorange" type="color">#ECCAA3</item>
     <item name="darkred" type="color">#E1A1A1</item>
 
+
+
+
+    <color name="gray">#757575</color>
+    <color name="gray_light">#EDEDED</color>
+    <color name="buttons_color">#68ACEF</color>
+
 </resources>

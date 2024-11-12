@@ -71,5 +71,7 @@
     <![CDATA[<b>Hello there!</b>\n<br/>\n<br/> "We are excited to have you on board!\n<br/>\n<br/>Lets go quickly through a few steps to enable the app to work at it is best!"]]>
 </string>
     <string name="skip" translatable="false">Skip</string>
+    <string name="no_internet">No Internet connection found. Check your Connection or try again.</string>
+    <string name="try_again">Try again</string>
 
 </resources>

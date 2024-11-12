@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.hkappstech.adsprosimple.am_ads.AM_Banner;
 import com.info.multiple.email.onplace.login.Utills.EmailManager;
 import com.info.multiple.adapter.AccountAdapter;
 import com.info.multiple.email.onplace.login.model.EmailData;
@@ -50,6 +53,10 @@ public class LoginMultipleAccountActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_multiple_account);
+
+        RelativeLayout adContainerBanner = findViewById(R.id.adContainerBanner);
+        ShimmerFrameLayout shimmerContainerBanner = findViewById(R.id.shimmer_container_banner);
+        AM_Banner.loadAdMobBanner(adContainerBanner, shimmerContainerBanner, LoginMultipleAccountActivity.this);
 
         title = getIntent().getStringExtra("title");
         loginUrl = getIntent().getStringExtra("loginUrl");

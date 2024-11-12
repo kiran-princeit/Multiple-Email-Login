@@ -17,4 +17,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Multiple Email Login"
 include(":app")
+include (":adsprosimple")
+
+
  
