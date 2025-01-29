@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "618895334499-a3dgtrc9a3lor6r6hupp7n9v6mkltsrk.apps.googleusercontent.com",
+          "client_id": "618895334499-o6kb3ev3rmqv1j3vi0br9vapbcak33cp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.info.multiple.email.onplace.login",
-            "certificate_hash": "f45f1456d42b12a201293913cccfd8d44e2a9092"
+            "certificate_hash": "efa808819940341462d39bd50897ae37bc634095"
           }
         },
         {
@@ -41,7 +41,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-3550495048419194~6453754982"
     }
   ],
   "configuration_version": "1"

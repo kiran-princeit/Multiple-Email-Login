@@ -60,4 +60,7 @@
 
     <string name="des1"><![CDATA[<b>您好！</b>\n<br/>\n<br/>「我們很高興您加入！\n<br/>\n<br/>讓我們快速完成幾個步驟，使應用程式能夠以最佳狀態運行！]]></string>
     <string name="skip">跳過</string>
+    <string name="no_internet">No se encontró conexión a Internet. Verifique su conexión o inténtelo nuevamente.</string>
+    <string name="try_again">再試一次</string>
+    <string name="about_text">如果您使用多個電子郵件，例如 Gmail、Outlook。一封郵件、雅虎等，每封電子郵件都需要單獨的應用程序，這既耗時又無聊，電子郵件- 在一個地方應用程序為其提供了解決方案，現在不需要為所有電子郵件- 在一個地方快速提供各種應用程式。</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">All Email - at one place</string>
+    <string name="app_name" translatable="false">All Email Login - AI Mail</string>
     <string name="aol" translatable="false">AOL</string>
     <string name="yahoo" translatable="false">Yahoo</string>
     <string name="yendex" translatable="false">Yandex</string>
@@ -71,7 +71,11 @@
     <![CDATA[<b>Hello there!</b>\n<br/>\n<br/> "We are excited to have you on board!\n<br/>\n<br/>Lets go quickly through a few steps to enable the app to work at it is best!"]]>
 </string>
     <string name="skip" translatable="false">Skip</string>
-    <string name="no_internet">No Internet connection found. Check your Connection or try again.</string>
-    <string name="try_again">Try again</string>
+    <string name="no_internet" translatable="false">No Internet connection found. Check your Connection or try again.</string>
+    <string name="try_again" translatable="false">Try again</string>
+    <string name="about_text">If You have use more then one Email like Gmail, Outlook. One Mail, Yahoo etc. and need separate app for each Email, which is time consuming and borring, Email - At one place app provide solution for it,Now no need for various app forAll Email - At one place quickly.\n\nSmoothly switch between different types of email without having to sign out. You can easily Change languages. Easily switch to the email all in one interface into another language.</string>
+
+    <string name="facebook_app_id">your_facebook_app_id</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 
 </resources>

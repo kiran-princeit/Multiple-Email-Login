@@ -62,12 +62,17 @@
     <item name="darkgreen" type="color">#DAF3A8</item>
     <item name="darkorange" type="color">#ECCAA3</item>
     <item name="darkred" type="color">#E1A1A1</item>
-
+    <color name="rating">#FFC70A</color>
 
 
 
     <color name="gray">#757575</color>
     <color name="gray_light">#EDEDED</color>
     <color name="buttons_color">#68ACEF</color>
+
+    <color name="ads_bg_color">#E8F6ED</color>
+    <color name="second_color">#2bcd45</color>
+    <color name="white2">#f2f2f2</color>
+<!--    <color name="gray">#c9c9d4</color>-->
 
 </resources>

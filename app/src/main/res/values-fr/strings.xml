@@ -60,4 +60,7 @@
     <string name="des2"><![CDATA[Accès rapide à tous vos comptes\n<br/>\n<br/>Souligne la simplicité et la facilité de gestion de plusieurs comptes.]]></string>
     <string name="des1"><![CDATA[<b>Bonjour !</b>\n<br/>\n<br/> "Nous sommes ravis de vous compter parmi nous !\n<br/>\n<br/>Laissons suivez rapidement quelques étapes pour permettre à l'application de fonctionner au mieux!"]]></string>
     <string name="skip">Sauter</string>
+    <string name="no_internet">Aucune connexion Internet trouvée. Vérifiez votre connexion ou réessayez.</string>
+    <string name="try_again">Essayer à nouveau</string>
+    <string name="about_text">Si vous avez utilisé plusieurs e-mails comme Gmail, Outlook. Un seul courrier, Yahoo, etc. et nécessite une application distincte pour chaque e-mail, ce qui prend du temps et est ennuyeux. Email - L\'application à un seul endroit fournit une solution, désormais plus besoin de diverses applications pour tous les e-mails - au même endroit rapidement.</string>
 </resources>

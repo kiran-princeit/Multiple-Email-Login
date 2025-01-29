@@ -12,43 +12,37 @@ android {
         applicationId = "com.info.multiple.email.onplace.login"
         minSdk = 21
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 8
+        versionName = "1.7"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("D:\\Multiple Email Login\\app\\multipleemaillogin.jks")
+            storePassword = "Prince@9313"
+            keyAlias = "key0"
+            keyPassword = "Prince@9313"
+        }
+    }
 
     buildTypes {
-        release {
+        getByName("debug") {
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = "false"
+        }
+        getByName("release") {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = "true"
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
         }
     }
-
-
-
-//    buildTypes {
-//        debug {
-//            isMinifyEnabled =false
-//            isShrinkResources =false
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                "proguard-rules.pro"
-//            )
-//        }
-//        release {
-//            isMinifyEnabled =true
-//            isShrinkResources =true
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                "proguard-rules.pro"
-//            )
-//        }
-//    }
 
     buildFeatures {
         buildConfig = true
@@ -58,50 +52,45 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    ndkVersion = "28.0.12674087 rc2"
+
 }
 
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
 
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
-    implementation ("com.intuit.sdp:sdp-android:1.1.1")
-    implementation ("com.intuit.ssp:ssp-android:1.1.1")
-
-    implementation ("android.arch.persistence.room:runtime:1.0.0-alpha1")
-    annotationProcessor ("android.arch.persistence.room:compiler:1.0.0-alpha1")
-    implementation ("com.airbnb.android:lottie:3.4.0")
-    implementation ("com.github.ybq:Android-SpinKit:1.4.0")
-
-
-    implementation ("androidx.multidex:multidex:2.0.1")
+    implementation("com.intuit.sdp:sdp-android:1.1.1")
+    implementation("com.intuit.ssp:ssp-android:1.1.1")
+    implementation("com.github.ybq:Android-SpinKit:1.4.0")
+    implementation("androidx.multidex:multidex:2.0.1")
+    implementation("com.github.bumptech.glide:glide:4.9.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.9.0")
 
 //    Ads
-
-    implementation ("com.google.android.gms:play-services-ads:23.5.0")
-
+    implementation("com.google.android.gms:play-services-ads:23.5.0")
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     // Firebase SDK
+    implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-config")
+    implementation("com.google.firebase:firebase-core:21.1.1")
+    implementation("com.google.firebase:firebase-crashlytics:19.2.1")
+    implementation("com.google.android.ump:user-messaging-platform:3.1.0")
+    implementation("android.arch.lifecycle:extensions:1.1.1")
 
-//    implementation("com.google.firebase:firebase-analytics:22.1.2")
-//    implementation("com.google.firebase:firebase-crashlytics:19.2.1")
-    implementation ("com.facebook.shimmer:shimmer:0.5.0")
-
-    implementation (platform("com.google.firebase:firebase-bom:32.1.1"))
-    implementation ("com.google.firebase:firebase-analytics")
-    implementation ("com.google.firebase:firebase-config")
-    implementation ("com.google.firebase:firebase-core:21.1.1")
-    implementation ("com.google.firebase:firebase-crashlytics:19.2.1")
-
-//    implementation ("com.google.code.gson:gson:2.10.1")
-
-
-    implementation(project(path = ":adsprosimple"))
+    implementation("com.google.code.gson:gson:2.11.0")
+    implementation("com.google.android.ads.consent:consent-library:1.0.8")
+//facebook ads
+    implementation("com.facebook.android:audience-network-sdk:6.12.0")
+    implementation("com.google.ads.mediation:facebook:6.12.0.0")
 
 }

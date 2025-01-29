@@ -4,18 +4,24 @@ public class Language {
     private String code;
     private String name;
 
-    public Language(String code, String name) {
+
+    private int flags;
+
+    public Language(String code, String name, int flags) {
         this.code = code;
         this.name = name;
+        this.flags = flags;
     }
 
-    // Getter for language code
     public String getCode() {
         return code;
     }
 
-    // Getter for language name
     public String getName() {
         return name;
+    }
+
+    public int getFlags() {
+        return flags;
     }
 }

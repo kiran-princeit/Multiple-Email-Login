@@ -12,14 +12,15 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.info.multiple.email.onplace.login.BaseActivity;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.info.multiple.email.onplace.login.Utills.EmailManager;
-import com.info.multiple.adapter.EmailDialogAdapter;
+import com.info.multiple.email.onplace.login.adapter.EmailDialogAdapter;
 import com.info.multiple.email.onplace.login.model.EmailData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SelectMailActivity extends BaseActivity implements EmailDialogAdapter.OnSelectionChangedListener {
@@ -27,25 +28,26 @@ public class SelectMailActivity extends BaseActivity implements EmailDialogAdapt
     public static Button btnOK;
     EmailDialogAdapter emailAdapter;
     private ArrayList<EmailData> emailDataList;
+    private List<Object> items;
+    int nativeAdShow = 9;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_mail);
-
         emailDataList = EmailManager.getEmailData(this);
+
+        // Populate the list with ads based on the nativeAdShow parameter
+        items = insertAdsInList(emailDataList, nativeAdShow);
 
         findViewById(R.id.ivClose).setOnClickListener(view -> {
             onBackPressed();
         });
-
         rvEmails = findViewById(R.id.rvEmails);
         btnOK = findViewById(R.id.btnOK);
-
         rvEmails.setLayoutManager(new LinearLayoutManager(this));
-        emailAdapter = new EmailDialogAdapter(emailDataList,this,  this);
-
+        emailAdapter = new EmailDialogAdapter(items, this, this);
         rvEmails.setAdapter(emailAdapter);
         loadSelectedEmails();
         btnOK.setOnClickListener(view -> {
@@ -56,14 +58,11 @@ public class SelectMailActivity extends BaseActivity implements EmailDialogAdapt
                     selectedEmails.add(String.valueOf(email.getId())); // Add the email ID
                 }
             }
-
             // Save selected emails to SharedPreferences
             SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putStringSet("emails", new HashSet<>(selectedEmails)); // Save as Set
             editor.apply();
-
-
             Intent resultIntent = new Intent();
             resultIntent.putStringArrayListExtra("selectedEmails", selectedEmails);
             setResult(RESULT_OK, resultIntent);
@@ -73,11 +72,46 @@ public class SelectMailActivity extends BaseActivity implements EmailDialogAdapt
 
         updateOkButtonVisibility();
     }
+//    private List<Object> insertAdsInList(List<EmailData> emailDataList) {
+//        List<Object> combinedList = new ArrayList<>();
+//        for (int i = 0; i < emailDataList.size(); i++) {
+//            combinedList.add(emailDataList.get(i));
+//            // Insert ad placeholder every 6 items
+//            if ((i + 1) % 3 == 0) {
+//                combinedList.add(EmailDialogAdapter.AD_PLACEHOLDER);
+//            }
+//        }
+//        return combinedList;
+//    }
+
+    private List<Object> insertAdsInList(List<EmailData> emailDataList, int nativeAdShow) {
+        List<Object> combinedList = new ArrayList<>();
+        for (int i = 0; i < emailDataList.size(); i++) {
+            combinedList.add(emailDataList.get(i));
+            // Insert ad placeholder after every `nativeAdShow` items
+            if ((i + 1) % nativeAdShow == 0) {
+                combinedList.add(EmailDialogAdapter.AD_PLACEHOLDER);
+            }
+        }
+        return combinedList;
+    }
+//private List<Object> insertAdsInList(List<EmailData> emailDataList) {
+//    List<Object> combinedList = new ArrayList<>();
+//    for (int i = 0; i < emailDataList.size(); i++) {
+//        combinedList.add(emailDataList.get(i));
+//
+//        // Insert ad placeholder after every `nativeAdShow` items
+//        if (nativeAdShow > 0 && (i + 1) % nativeAdShow == 0) {
+//            combinedList.add(EmailDialogAdapter.AD_PLACEHOLDER);
+//        }
+//    }
+//    return combinedList;
+//}
+
 
     private void loadSelectedEmails() {
         // Define default IDs
         Set<String> defaultIds = new HashSet<>(Arrays.asList("1", "2", "3", "7", "9", "18", "12"));
-
         // Get selected and removed default emails from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
         Set<String> selectedEmails = sharedPreferences.getStringSet("emails", new HashSet<>());
@@ -114,7 +148,6 @@ public class SelectMailActivity extends BaseActivity implements EmailDialogAdapt
         saveSelectedEmails();
     }
 
-
     private void saveSelectedEmails() {
         SharedPreferences sharedPreferences = getSharedPreferences("SelectedEmails", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -125,11 +158,9 @@ public class SelectMailActivity extends BaseActivity implements EmailDialogAdapt
                 selectedEmails.add(String.valueOf(email.getId())); // Save only checked email IDs
             }
         }
-
         editor.putStringSet("emails", selectedEmails); // Save the set of selected emails
         editor.apply(); // Apply the changes
     }
-
 
     @Override
     protected void onResume() {
@@ -137,6 +168,4 @@ public class SelectMailActivity extends BaseActivity implements EmailDialogAdapt
         loadSelectedEmails();
         updateOkButtonVisibility();// Reload emails to update checked state based on SharedPreferences
     }
-
-
 }

@@ -60,5 +60,8 @@
 
     <string name="des1"><![CDATA[<b>こんにちは！</b>\n<br/>\n<br/> "ご参加いただけることを嬉しく思います!\n<br/>\n<br/>いくつかの手順をすばやく実行して、アプリが最適な状態で動作できるようにしてください。"]]></string>
     <string name="skip">スキップ</string>
+    <string name="no_internet">インターネット接続が見つかりません。接続を確認するか、もう一度試してください。</string>
+    <string name="try_again">もう一度やり直してください</string>
+    <string name="about_text">Gmail、Outlook など複数の電子メールを使用している場合。 1 つのメール、Yahoo などでは、メールごとに個別のアプリが必要ですが、これは時間がかかり退屈です。メール - 1 か所のアプリがそのソリューションを提供します。今では、すべてのメール - 1 か所で迅速にさまざまなアプリを使用する必要はありません。</string>
 
 </resources>

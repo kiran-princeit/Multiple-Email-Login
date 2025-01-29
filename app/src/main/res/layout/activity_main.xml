@@ -24,11 +24,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="18sp"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center_vertical"
             android:text="@string/app_name"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -117,12 +117,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_container_banner"
+            android:id="@+id/shimmer_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -130,14 +131,14 @@
             app:shimmer_auto_start="true"
             app:shimmer_base_color="#ccc">
 
-            <include layout="@layout/load_banner" />
+            <include layout="@layout/ad_unifiled_regular" />
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
-
-        <RelativeLayout
-            android:id="@+id/adContainerBanner"
-            style="@style/BannerAdsView" />
+        <FrameLayout
+            android:id="@+id/ad_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

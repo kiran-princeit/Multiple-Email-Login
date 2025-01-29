@@ -64,4 +64,7 @@
 
     <string name="des1"><![CDATA[<b>Ciao!</b>\n<br/>\n<br/> "Siamo entusiasti di averti a bordo!\n<br/>\n<br/>Consentitemi segui velocemente alcuni passaggi per far sì che l'app funzioni al meglio!"]]></string>
     <string name="skip">Saltare</string>
+    <string name="no_internet">Nessuna connessione Internet trovata. Controlla la tua connessione o riprova.</string>
+    <string name="try_again">Riprova</string>
+    <string name="about_text">Se utilizzi più di un\'e-mail come Gmail, Outlook. Una posta, Yahoo ecc. e necessitano di un\'app separata per ciascuna e-mail, il che richiede tempo ed è noioso, E-mail: l\'app in un unico posto fornisce la soluzione, ora non sono necessarie varie app per tutte le e-mail: in un unico posto rapidamente.</string>
 </resources>

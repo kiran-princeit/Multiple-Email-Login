@@ -1,12 +1,11 @@
 package com.info.multiple.email.onplace.login.model;
 
 import androidx.annotation.ColorInt;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity(tableName = "emails")
+
+//@Entity(tableName = "emails")
 public class EmailData{
-    @PrimaryKey
+//    @PrimaryKey
     private int id;
     private String name;
     private String url;

@@ -1,18 +1,23 @@
 package com.info.multiple.email.onplace.login;
 
+
+
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.info.multiple.email.onplace.login.Utills.LanguagePreference;
-import com.info.multiple.adapter.OnboardingAdapter;
+import com.info.multiple.email.onplace.login.adapter.OnboardingAdapter;
+import com.info.multiple.email.onplace.login.adsprosimple.GlobalVar;
 import com.info.multiple.email.onplace.login.model.OnboardingItem;
 
 import java.util.ArrayList;
@@ -38,6 +43,13 @@ public class ContinueActivity extends BaseActivity {
         indicatorLayout = findViewById(R.id.indicatorLayout);
 
         tvPrivacy.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+
+       tvPrivacy.setOnClickListener(view -> {
+            String privacyUrl = GlobalVar.appData.getprivacyurl();
+            openPrivacyPolicy(privacyUrl);
+
+        });
 
         ivContinue.setOnClickListener(v -> {
             LanguagePreference.setOnboardingShown(ContinueActivity.this, true);
@@ -86,7 +98,14 @@ public class ContinueActivity extends BaseActivity {
             indicatorLayout.addView(imageView, layoutParams);
         }
     }
-
+    private void openPrivacyPolicy(String url) {
+        if (url != null && !url.isEmpty()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "URL is null or empty", Toast.LENGTH_SHORT).show();
+        }
+    }
     private void setCurrentIndicator(int index) {
         int childCount = indicatorLayout.getChildCount();
         for (int i = 0; i < childCount; i++) {

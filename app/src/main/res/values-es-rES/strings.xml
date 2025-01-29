@@ -59,4 +59,9 @@
     <string name="des2"><![CDATA[Acceso rápido a todas sus cuentas\n<br/>\n<br/>Enfatiza la simplicidad y facilidad de administrar múltiples cuentas.]]></string>
     <string name="des1"><![CDATA[<b>¡Hola!</b>\n<br/>\n<br/> "¡Estamos emocionados de tenerlo a bordo!\n<br/>\n<br/>¡Vamos ¡Siga rápidamente algunos pasos para permitir que la aplicación funcione de la mejor manera!"]]></string>
     <string name="skip">Saltar</string>
+    <string name="no_internet">No se encontró conexión a Internet. Verifique su conexión o inténtelo nuevamente.</string>
+    <string name="try_again">Intentar otra vez</string>
+    <string name="about_text">Si ha utilizado más de un correo electrónico como Gmail, Outlook. One Mail, Yahoo, etc. y necesitan una aplicación separada para cada correo electrónico, lo cual consume mucho tiempo y es aburrido. Correo electrónico: la aplicación en un solo lugar proporciona una solución. Ahora no se necesitan varias aplicaciones para todos los correos electrónicos: en un solo lugar rápidamente.
+
+Cambie fácilmente entre diferentes tipos de correo electrónico sin tener que cerrar sesión. Puedes cambiar de idioma fácilmente. Cambie fácilmente al correo electrónico todo en una interfaz a otro idioma.</string>
 </resources>

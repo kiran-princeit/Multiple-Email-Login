@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        jcenter()
     }
 }
 dependencyResolutionManagement {
@@ -17,7 +18,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Multiple Email Login"
 include(":app")
-include (":adsprosimple")
+//include( ":myadslibrary")
 
 
  

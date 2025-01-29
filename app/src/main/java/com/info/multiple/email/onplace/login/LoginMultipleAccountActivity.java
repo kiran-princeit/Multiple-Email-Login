@@ -11,9 +11,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,9 +29,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.hkappstech.adsprosimple.am_ads.AM_Banner;
 import com.info.multiple.email.onplace.login.Utills.EmailManager;
-import com.info.multiple.adapter.AccountAdapter;
+import com.info.multiple.email.onplace.login.adapter.AccountAdapter;
+import com.info.multiple.email.onplace.login.adsprosimple.MobileAds;
 import com.info.multiple.email.onplace.login.model.EmailData;
 
 import java.util.ArrayList;
@@ -48,15 +50,17 @@ public class LoginMultipleAccountActivity extends BaseActivity {
     String loginUrl;
     public static String title;
     public static int emailColor;
+    private FrameLayout adContainer;
+    private ShimmerFrameLayout shimmerFrameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_multiple_account);
 
-        RelativeLayout adContainerBanner = findViewById(R.id.adContainerBanner);
-        ShimmerFrameLayout shimmerContainerBanner = findViewById(R.id.shimmer_container_banner);
-        AM_Banner.loadAdMobBanner(adContainerBanner, shimmerContainerBanner, LoginMultipleAccountActivity.this);
+        adContainer = findViewById(R.id.ad_container);
+        shimmerFrameLayout = findViewById(R.id.shimmer_layout);
+        loadAd();
 
         title = getIntent().getStringExtra("title");
         loginUrl = getIntent().getStringExtra("loginUrl");
@@ -84,50 +88,39 @@ public class LoginMultipleAccountActivity extends BaseActivity {
 
     }
 
-        private void checkArrayListAndUpdateButtonVisibility() {
-//        if (accountList.size() == 0 || accountList.isEmpty() || accountAdapter == null) {
-//            llData.setVisibility(View.GONE);
-//            btnAdd.setVisibility(View.VISIBLE);
-//            addProfile.setVisibility(View.GONE);
-////        } else if (accountList.size() != 0 || !accountList.isEmpty() || accountAdapter != null) {
-//        } else  {
-//            llData.setVisibility(View.VISIBLE);
-//            btnAdd.setVisibility(View.GONE);
-//            addProfile.setVisibility(View.VISIBLE);
-//        }
+    private void loadAd() {
+        if (adContainer != null && !MyApp.isNetworkConnected(LoginMultipleAccountActivity.this)) {
+            adContainer.setVisibility(View.GONE);
+            return;
+        }
+        MobileAds.showBanner(adContainer, shimmerFrameLayout, LoginMultipleAccountActivity.this);
+    }
 
+    private void checkArrayListAndUpdateButtonVisibility() {
+        if (accountList == null || accountList.isEmpty()) {
+            // Hide llData
+            llData.setVisibility(View.GONE);
+            btnAdd.setVisibility(View.VISIBLE);
+            addProfile.setVisibility(View.GONE);
 
-            if (accountList == null || accountList.isEmpty()) {
-                // Hide llData
-                llData.setVisibility(View.GONE);
-                btnAdd.setVisibility(View.VISIBLE);
-                addProfile.setVisibility(View.GONE);
+            Log.d("TAG", "checkArrayListAndUpdateButtonVisibility: " + accountList.size());
 
-                Log.d("TAG", "checkArrayListAndUpdateButtonVisibility: "+ accountList.size());
-
-                // Adjust ll_main layout params to take more space
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) ll_main.getLayoutParams();
-                params.weight = 1.7f; // Increase weight as needed to fill space
-                ll_main.setLayoutParams(params);
-            } else {
-                // Show llData and reset layout params for ll_main
-                llData.setVisibility(View.VISIBLE);
-                btnAdd.setVisibility(View.GONE);
-                addProfile.setVisibility(View.VISIBLE);
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) ll_main.getLayoutParams();
-                params.weight = 1f; // Restore original weight if needed
-                ll_main.setLayoutParams(params);
-                Log.d("TAG1", "checkArrayListAndUpdateButtonVisibility: "+ accountList.size());
-            }
+            // Adjust ll_main layout params to take more space
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) ll_main.getLayoutParams();
+            params.weight = 1.7f; // Increase weight as needed to fill space
+            ll_main.setLayoutParams(params);
+        } else {
+            // Show llData and reset layout params for ll_main
+            llData.setVisibility(View.VISIBLE);
+            btnAdd.setVisibility(View.GONE);
+            addProfile.setVisibility(View.VISIBLE);
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) ll_main.getLayoutParams();
+            params.weight = 1f; // Restore original weight if needed
+            ll_main.setLayoutParams(params);
+            Log.d("TAG1", "checkArrayListAndUpdateButtonVisibility: " + accountList.size());
+        }
 
     }
-//    private void checkArrayListAndUpdateButtonVisibility() {
-//        boolean isEmpty = accountList.isEmpty();
-//        llData.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
-//        btnAdd.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
-//        addProfile.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
-//    }
-
 
     public void showDialog(String emailType) {
         final Dialog dialog = new Dialog(LoginMultipleAccountActivity.this);

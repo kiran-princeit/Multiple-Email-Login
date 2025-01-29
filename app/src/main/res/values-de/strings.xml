@@ -59,4 +59,7 @@
     <string name="des2"><![CDATA[Acceso rápido a todas sus cuentas\n<br/>\n<br/>Enfatiza la simplicidad y facilidad de administrar múltiples cuentas.]]></string>
     <string name="des1"><![CDATA[<b>Hallo!</b>\n<br/>\n<br/> „Wir freuen uns, Sie an Bord zu haben!\n<br/>\n<br/>Lasst uns Gehen Sie schnell ein paar Schritte durch, damit die App am besten funktioniert!"]]></string>
     <string name="skip">Überspringen</string>
+    <string name="no_internet">Keine Internetverbindung gefunden. Überprüfen Sie Ihre Verbindung oder versuchen Sie es erneut.</string>
+    <string name="try_again">Versuchen Sie es erneut</string>
+    <string name="about_text">Wenn Sie mehr als eine E-Mail verwenden, z. B. Gmail oder Outlook. Eine E-Mail, Yahoo usw. und Sie benötigen für jede E-Mail eine separate App, was zeitaufwändig und langweilig ist. Die E-Mail-App an einem Ort bietet eine Lösung dafür. Jetzt sind keine verschiedenen Apps für alle E-Mails mehr erforderlich – schnell an einem Ort.</string>
 </resources>

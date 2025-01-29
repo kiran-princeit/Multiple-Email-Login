@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/constraintLayout"
     android:background="@color/white">
 
     <LinearLayout
@@ -94,7 +94,7 @@
             android:id="@+id/llData"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.6"
+            android:layout_weight="1.4"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -151,8 +151,8 @@
         android:layout_marginRight="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:background="@drawable/blue_rounded_corner"
-        android:text="@string/add_account"
         android:fontFamily="@font/poppin_medium"
+        android:text="@string/add_account"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
@@ -160,49 +160,36 @@
         app:layout_constraintBottom_toTopOf="@+id/llAds"
         app:layout_constraintEnd_toEndOf="parent" />
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/llAds"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/white"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="vertical"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent">-->
+    <FrameLayout
+        android:id="@+id/llAds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-
-        <LinearLayout
-            android:id="@+id/llAds"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_card_ads"
+            app:shimmer_auto_start="true"
+            app:shimmer_base_color="#ccc">
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_container_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/bg_card_ads"
-                app:shimmer_auto_start="true"
-                app:shimmer_base_color="#ccc">
+            <include layout="@layout/load_banner" />
 
-                <include layout="@layout/load_banner" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+        <FrameLayout
+            android:id="@+id/ad_container"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="wrap_content" />
 
+    </FrameLayout>
 
-            <RelativeLayout
-                android:id="@+id/adContainerBanner"
-                style="@style/BannerAdsView" />
-
-        </LinearLayout>
-
-
-<!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
